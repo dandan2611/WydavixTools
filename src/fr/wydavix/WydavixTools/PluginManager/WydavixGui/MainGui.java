@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.ItemInventory;
+package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -7,16 +7,8 @@ import org.bukkit.inventory.ItemStack;
 
 import fr.wydavix.WydavixTools.PluginsManager.Main;
 
-public class InventoryManager {
-
-	public ItemGui ItemGUi;
-	public ServerGui ServerGui;
-
-	public InventoryManager() {
-		this.ItemGUi = new ItemGui();
-		this.ServerGui = new ServerGui();
-	}
-
+public class MainGui {
+	
 	public Inventory getWydavixGui() {
 
 		Inventory WydavixGui = Bukkit.createInventory(null, 45, "§f§l» §bWydavixTools Managers");
@@ -29,7 +21,7 @@ public class InventoryManager {
 				"§9§l» §3WebSite §7: §b§nwww.wydavix.fr", "§4§l» §cNeed Support §7: §b§ndiscord.wydavix.fr",
 				"§1§k!!§bWydavixTools§1§k!!");
 
-		setGlassInventory(WydavixGui);
+		Main.instance.GuiManager.setGlassInventory(WydavixGui);
 
 		WydavixGui.setItem(20, ItemMenu);
 		WydavixGui.setItem(22, ServerMenu);
@@ -37,18 +29,5 @@ public class InventoryManager {
 		WydavixGui.setItem(44, credit);
 
 		return WydavixGui;
-	}
-	
-	public void setGlassInventory(Inventory invetory) {
-		ItemStack glass = Main.instance.Utils.CreateItem(Material.STAINED_GLASS_PANE, 0, " ");
-		
-		for (int i = 0; i < 10; i++)
-			invetory.setItem(i, glass);
-		for (int i = 35; i < 45; i++)
-			invetory.setItem(i, glass);
-		for (int i = 17; i < 27; i += 9)
-			invetory.setItem(i, glass);
-		for (int i = 18; i < 28; i += 9)
-			invetory.setItem(i, glass);
 	}
 }

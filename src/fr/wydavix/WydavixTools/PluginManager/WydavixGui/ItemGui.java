@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.ItemInventory;
+package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -19,7 +19,7 @@ public class ItemGui {
 		ItemStack tool = Main.instance.Utils.CreateItem(Material.DIAMOND_AXE, 0, "§3§l» §9Tool");
 		ItemStack other = Main.instance.Utils.CreateItem(Material.COBBLESTONE, 0, "§6§l» §eOther");
 
-		Main.instance.InventoryManager.setGlassInventory(MainItemGui);
+		Main.instance.GuiManager.setGlassInventory(MainItemGui);
 		MainItemGui.setItem(20, armor);
 		MainItemGui.setItem(22, other);
 		MainItemGui.setItem(24, tool);
@@ -32,7 +32,7 @@ public class ItemGui {
 
 		Inventory ArmorPageItemGui = Bukkit.createInventory(null, 45, "§4§l» §cArmor Page 1");
 
-		Main.instance.InventoryManager.setGlassInventory(ArmorPageItemGui);
+		Main.instance.GuiManager.setGlassInventory(ArmorPageItemGui);
 
 		ArmorPageItemGui.setItem(36, back);
 		ArmorPageItemGui.setItem(38, page1);
@@ -45,9 +45,10 @@ public class ItemGui {
 
 		Inventory ToolPageItemGui = Bukkit.createInventory(null, 45, "§3§l» §9Tool Page 1");
 
-		Main.instance.InventoryManager.setGlassInventory(ToolPageItemGui);
+		Main.instance.GuiManager.setGlassInventory(ToolPageItemGui);
 
-		ToolPageItemGui.setItem(10, Main.instance.ItemManager.getHammer());
+		ToolPageItemGui.setItem(10, Main.instance.ItemManager.HammerItem.getHammerFake());
+		ToolPageItemGui.setItem(11, Main.instance.ItemManager.MjolnirItem.getMjolnirFake());
 		ToolPageItemGui.setItem(36, back);
 		ToolPageItemGui.setItem(38, page1);
 		ToolPageItemGui.setItem(44, Main.instance.Utils.CreateItem(Material.REDSTONE, 0, "§f§l» §cArmor"));
@@ -59,7 +60,7 @@ public class ItemGui {
 
 		Inventory OtherPageItemGui = Bukkit.createInventory(null, 45, "§6§l» §eOther Page 1");
 
-		Main.instance.InventoryManager.setGlassInventory(OtherPageItemGui);
+		Main.instance.GuiManager.setGlassInventory(OtherPageItemGui);
 
 		OtherPageItemGui.setItem(36, back);
 		OtherPageItemGui.setItem(38, page1);

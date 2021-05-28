@@ -22,7 +22,7 @@ public class CommandWydavix implements CommandExecutor {
 					return true;
 				}
 
-				p.openInventory(Main.instance.InventoryManager.getWydavixGui());
+				p.openInventory(Main.instance.GuiManager.MainGui.getWydavixGui());
 
 			} else {
 				p.sendMessage("§f§l» §6You do not have access to the command");

@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.ItemInventory;
+package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -14,7 +14,7 @@ public class ServerGui {
 	public Inventory getMainServerGui() {
 		Inventory MainServerGui = Bukkit.createInventory(null, 45, "§c§k!!§4Server Menu§c§k!!");
 
-		Main.instance.InventoryManager.setGlassInventory(MainServerGui);
+		Main.instance.GuiManager.setGlassInventory(MainServerGui);
 		MainServerGui.setItem(36, back);
 
 		return MainServerGui;

@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.ItemInventory;
+package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -14,7 +14,7 @@ import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class InventoryEventListener implements Listener {
+public class MainEventListener implements Listener {
 
 	@EventHandler
 	public void onInvetoryClick(InventoryClickEvent e) {
@@ -24,58 +24,12 @@ public class InventoryEventListener implements Listener {
 		if (it == null)
 			return;
 
-		if (inv.getName().equalsIgnoreCase("§d§k!!§5Items Managers§d§k!!")) {
-			e.setCancelled(true);
-
-			if (it.getType() == Material.ARROW) {
-				p.openInventory(Main.instance.InventoryManager.getWydavixGui());
-			}
-
-			if (it.getType() == Material.DIAMOND_CHESTPLATE) {
-				p.openInventory(Main.instance.InventoryManager.ItemGUi.ArmorPage1ItemGui());
-			}
-
-			if (it.getType() == Material.DIAMOND_AXE) {
-				p.openInventory(Main.instance.InventoryManager.ItemGUi.ToolPage1ItemGui());
-			}
-
-			if (it.getType() == Material.COBBLESTONE) {
-				p.openInventory(Main.instance.InventoryManager.ItemGUi.OtherPage1ItemGui());
-			}
-		}
-
-		if (inv.getName().contains("Page 1")) {
-			e.setCancelled(true);
-
-			if (it.getType() == Material.ARROW) {
-				p.openInventory(Main.instance.InventoryManager.ItemGUi.CreateMainItemGui());
-			}
-
-			if (it.getType() == Material.REDSTONE) {
-				if (it.getItemMeta().getDisplayName().contains("Other")) {
-					p.openInventory(Main.instance.InventoryManager.ItemGUi.OtherPage1ItemGui());
-				} else if (it.getItemMeta().getDisplayName().contains("Armor")) {
-					p.openInventory(Main.instance.InventoryManager.ItemGUi.ArmorPage1ItemGui());
-				} else if (it.getItemMeta().getDisplayName().contains("Tool")) {
-					p.openInventory(Main.instance.InventoryManager.ItemGUi.ToolPage1ItemGui());
-				}
-			}
-		}
-
-		if (inv.getName().equalsIgnoreCase("§c§k!!§4Server Menu§c§k!!")) {
-			e.setCancelled(true);
-
-			if (it.getType() == Material.ARROW) {
-				p.openInventory(Main.instance.InventoryManager.getWydavixGui());
-			}
-		}
-
 		if (inv.getName().equalsIgnoreCase("§f§l» §bWydavixTools Managers")) {
 			e.setCancelled(true);
 
 			if (it.getType() == Material.ANVIL
 					&& it.getItemMeta().getDisplayName().equalsIgnoreCase("§9§l» §d§k!!§5Items Menu§d§k!!")) {
-				p.openInventory(Main.instance.InventoryManager.ItemGUi.CreateMainItemGui());
+				p.openInventory(Main.instance.GuiManager.ItemGUi.CreateMainItemGui());
 				return;
 			}
 
@@ -84,7 +38,7 @@ public class InventoryEventListener implements Listener {
 			}
 
 			if (it.getType() == Material.CHEST) {
-				p.openInventory(Main.instance.InventoryManager.ServerGui.getMainServerGui());
+				p.openInventory(Main.instance.GuiManager.ServerGui.getMainServerGui());
 			}
 
 			if (it.getType() == Material.BOOK) {
