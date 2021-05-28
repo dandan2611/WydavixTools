@@ -1,0 +1,8 @@
+name: WydavixTools
+version: 1.0
+author: Wydavix
+main: fr.wydavix.WydavixTools.PluginsManager.Main
+commands:
+  wydavix:
+    description: Command that allows access to the plugins menu
+    permission: WydavixTools.wydavix
