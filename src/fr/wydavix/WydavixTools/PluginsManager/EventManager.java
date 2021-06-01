@@ -19,5 +19,6 @@ public class EventManager {
 		pm.registerEvents(new ServerEventListener(), pl);
 		pm.registerEvents(new HammerEventListener(), pl);
 		pm.registerEvents(new MjolnirEventListener(), pl);
+		pm.registerEvents(new WarningsEvent(), pl);
 	}
 }
