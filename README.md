@@ -6,3 +6,7 @@
 # 📖 Wiki
 
 🛠️ More Information go to the wiki [Click Here](https://github.com/Wydavix/WydavixTools/wiki)
+
+# 🔗 Download
+
+To downloads this plugins go to [shop.wydavix.fr](https://shop.wydavix.fr/) or [spigotmc.org](https://www.spigotmc.org/resources/wydavixtools.93198/)
