@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixItem;
+package fr.wydavix.wydavixtools.listeners;
 
 import java.util.Random;
 
@@ -12,16 +12,18 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 public class MjolnirEventListener implements Listener {
 	
 	@EventHandler
-	public void onentitydamge(EntityDamageByEntityEvent e) {
-		Random random = new Random();
-		int number = 0;
-
+	public void onEntityDamage(EntityDamageByEntityEvent e) {
 		if (e.getDamager() instanceof Player) {
-			Player p = (Player) e.getDamager();
-			if (p.getItemInHand().getType() == Material.DIAMOND_AXE
-					&& p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("§1§k!!§9§lMjolnir§1§k!!")) {
 
-				for (int counter = 1; counter <= 1; counter++) {
+			Player p = (Player) e.getDamager();
+
+			if (p.getItemInHand().getType() == Material.DIAMOND_AXE
+					&& p.getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase("Â§1Â§k!!Â§9Â§lMjolnirÂ§1Â§k!!")) {
+
+				Random random = new Random();
+				int number = 0;
+
+				for (int counter = 1; counter < 2; counter++) {
 					number = 1 + random.nextInt(20);
 
 					if (number == 1) {
@@ -29,10 +31,13 @@ public class MjolnirEventListener implements Listener {
 						Entity p1 = e.getEntity();
 						p1.getWorld().strikeLightning(p1.getLocation());
 
-						p.sendMessage("§f§l» §6La Foudre c'est abattu sur §e" + p1.getName());
+						p.sendMessage("Â§fÂ§lÂ» Â§6La Foudre s'est abattue sur Â§e" + p1.getName());
+
+						break;
 					}
 				}
 			}
+
 		}
 	}
 }
