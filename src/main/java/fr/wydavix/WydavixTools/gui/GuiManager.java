@@ -1,6 +1,7 @@
 package fr.wydavix.wydavixtools.gui;
 
 import fr.wydavix.wydavixtools.Main;
+import fr.wydavix.wydavixtools.WydavixUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -13,14 +14,14 @@ public class GuiManager {
 	private final HammerGui hammerGui;
 
 	public GuiManager() {
-		this.mainGui = new MainGui();
+		this.mainGui = new MainGui(this);
 		this.itemGui = new ItemGui();
 		this.serverGui = new ServerGui();
 		this.hammerGui = new HammerGui();
 	}
 	
-	public void setGlassInventory(Inventory inv) {
-		ItemStack glass = Main.INSTANCE.getUtils().createItem(Material.STAINED_GLASS_PANE, 0, " ");
+	public void fillInventoryWithGlass(Inventory inv) {
+		ItemStack glass = WydavixUtils.createItem(Material.STAINED_GLASS_PANE, 0, " ");
 		
 		for (int i = 0; i < 10; i++)
 			inv.setItem(i, glass);
@@ -47,5 +48,5 @@ public class GuiManager {
 	public HammerGui getHammerGui() {
 		return hammerGui;
 	}
-	
+
 }
