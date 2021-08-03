@@ -1,5 +1,6 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
+package fr.wydavix.wydavixtools.listeners.gui;
 
+import fr.wydavix.wydavixtools.Main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,23 +9,28 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import fr.wydavix.WydavixTools.PluginsManager.Main;
-
 public class ServerEventListener implements Listener {
-	
+
+	private final Main main;
+
+	public ServerEventListener(Main main) {
+		this.main = main;
+	}
+
 	@EventHandler
-	public void onInvetoryClick(InventoryClickEvent e) {
+	public void onInventoryClick(InventoryClickEvent e) {
 		Inventory inv = e.getInventory();
 		Player p = (Player) e.getWhoClicked();
 		ItemStack it = e.getCurrentItem();
+
 		if (it == null)
 			return;
 
-		if (inv.getName().equalsIgnoreCase("§c§k!!§4Server Menu§c§k!!")) {
+		if (inv.getName().equalsIgnoreCase("Â§cÂ§k!!Â§4Server MenuÂ§cÂ§k!!")) {
 			e.setCancelled(true);
 
 			if (it.getType() == Material.ARROW) {
-				p.openInventory(Main.instance.GuiManager.MainGui.getWydavixGui());
+				p.openInventory(main.getGuiManager().getMainGui().generateGui());
 			}
 		}
 

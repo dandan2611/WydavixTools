@@ -1,5 +1,6 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
+package fr.wydavix.wydavixtools.listeners.gui;
 
+import fr.wydavix.wydavixtools.Main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,12 +10,16 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import fr.wydavix.WydavixTools.PluginsManager.Main;
-
 public class ItemEventListener implements Listener {
 
+	private final Main main;
+
+	public ItemEventListener(Main main) {
+		this.main = main;
+	}
+
 	@EventHandler
-	public void onInvetoryClick(InventoryClickEvent e) {
+	public void onInventoryClick(InventoryClickEvent e) {
 		Inventory inv = e.getInventory();
 		Player p = (Player) e.getWhoClicked();
 		ItemStack it = e.getCurrentItem();
@@ -23,23 +28,23 @@ public class ItemEventListener implements Listener {
 		if (it == null)
 			return;
 
-		if (inv.getName().equalsIgnoreCase("§d§k!!§5Items Managers§d§k!!")) {
+		if (inv.getName().equalsIgnoreCase("Â§dÂ§k!!Â§5Items ManagersÂ§dÂ§k!!")) {
 			e.setCancelled(true);
 
 			if (it.getType() == Material.ARROW) {
-				p.openInventory(Main.instance.GuiManager.MainGui.getWydavixGui());
+				p.openInventory(main.getGuiManager().getMainGui().generateGui());
 			}
 
 			if (it.getType() == Material.DIAMOND_CHESTPLATE) {
-				p.openInventory(Main.instance.GuiManager.ItemGUi.ArmorPage1ItemGui());
+				p.openInventory(main.getGuiManager().getItemGui().generateArmorPageGui());
 			}
 
 			if (it.getType() == Material.DIAMOND_AXE) {
-				p.openInventory(Main.instance.GuiManager.ItemGUi.ToolPage1ItemGui());
+				p.openInventory(main.getGuiManager().getItemGui().generateToolPageGui());
 			}
 
 			if (it.getType() == Material.COBBLESTONE) {
-				p.openInventory(Main.instance.GuiManager.ItemGUi.OtherPage1ItemGui());
+				p.openInventory(main.getGuiManager().getItemGui().generateOtherPageGui());
 			}
 		}
 
@@ -48,30 +53,30 @@ public class ItemEventListener implements Listener {
 
 			if (action == InventoryAction.PICKUP_ALL) {
 				if (it.getType() == Material.ARROW) {
-					p.openInventory(Main.instance.GuiManager.ItemGUi.CreateMainItemGui());
+					p.openInventory(main.getGuiManager().getItemGui().generateMainItemGui());
 				}
 
 				if (it.getType() == Material.REDSTONE) {
 					if (it.getItemMeta().getDisplayName().contains("Other")) {
-						p.openInventory(Main.instance.GuiManager.ItemGUi.OtherPage1ItemGui());
+						p.openInventory(main.getGuiManager().getItemGui().generateOtherPageGui());
 					} else if (it.getItemMeta().getDisplayName().contains("Armor")) {
-						p.openInventory(Main.instance.GuiManager.ItemGUi.ArmorPage1ItemGui());
+						p.openInventory(main.getGuiManager().getItemGui().generateArmorPageGui());
 					} else if (it.getItemMeta().getDisplayName().contains("Tool")) {
-						p.openInventory(Main.instance.GuiManager.ItemGUi.ToolPage1ItemGui());
+						p.openInventory(main.getGuiManager().getItemGui().generateToolPageGui());
 					}
 				}
 
 				if (it.getType() == Material.DIAMOND_PICKAXE && it.getItemMeta().getDisplayName().contains("Hammer")) {
-					p.getInventory().addItem(Main.instance.ItemManager.HammerItem.getHammer());
+					p.getInventory().addItem(main.getItemManager().getItemByIdentifier("hammer"));
 				}
 
 				if (it.getType() == Material.DIAMOND_AXE && it.getItemMeta().getDisplayName().contains("Mjolnir")) {
-					p.getInventory().addItem(Main.instance.ItemManager.MjolnirItem.getMjolnir());
+					p.getInventory().addItem(main.getItemManager().getItemByIdentifier("mjolnir"));
 				}
 			} else if (action == InventoryAction.PICKUP_HALF) {
-				
+
 				if (it.getType() == Material.DIAMOND_PICKAXE && it.getItemMeta().getDisplayName().contains("Hammer")) {
-					p.openInventory(Main.instance.GuiManager.HammerGui.getHammerGui());
+					p.openInventory(main.getGuiManager().getHammerGui().generateHammerGui());
 				}
 			}
 

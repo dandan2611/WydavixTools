@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixItem;
+package fr.wydavix.wydavixtools.listeners;
 
 import java.util.List;
 import java.util.Set;
@@ -18,25 +18,30 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import fr.wydavix.WydavixTools.PluginsManager.Main;
+import org.bukkit.plugin.Plugin;
 
 public class HammerEventListener implements Listener {
+
+	private final Plugin plugin;
+
+	public HammerEventListener(Plugin plugin) {
+		this.plugin = plugin;
+	}
 
 	@EventHandler
 	public void onClickBlock(BlockBreakEvent e) {
 		Player p = e.getPlayer();
 
-		int HammerSize = this.GetHammer(p);
+		int HammerSize = this.getHammer(p);
 		if (HammerSize != -1 && HammerSize != -2) {
 			Block b = e.getBlock();
-			this.HammerMine(getBlockFace(p, null), (HammerSize - 1) / 2, b);
+			this.mine(getBlockFace(p, null), (HammerSize - 1) / 2, b);
 		}
 
 	}
 
-	public void HammerMine(BlockFace BF, final int size, Block b) {
-		Bukkit.getScheduler().runTaskLater(Main.instance, new Runnable() {
+	public void mine(BlockFace BF, final int size, Block b) {
+		Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 
 			@Override
 			public void run() {
@@ -74,10 +79,10 @@ public class HammerEventListener implements Listener {
 		return lastTwoTargetBlocks.get(1).getFace(lastTwoTargetBlocks.get(0));
 	}
 
-	public int GetHammer(Player p) {
+	public int getHammer(Player p) {
 		if (p.getItemInHand() != null && p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
 			ItemMeta im = p.getItemInHand().getItemMeta();
-			if (im.getDisplayName() != null && im.getDisplayName().startsWith("§3§k!!§bHammer§3§k!!§r §f§l» §b")) {
+			if (im.getDisplayName() != null && im.getDisplayName().startsWith("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b")) {
 				String ssize = im.getDisplayName().split(" ")[2].substring(2, 3);
 				try {
 					return Integer.parseInt(ssize);
@@ -90,38 +95,38 @@ public class HammerEventListener implements Listener {
 	}
 
 	@EventHandler
-	public void onrightclick(PlayerInteractEvent e) {
+	public void onRightClick(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		Action action = e.getAction();
 
 		if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE && (!p.isSneaking())) {
-			if (p.getItemInHand().getItemMeta().getDisplayName().contains("§3§k!!§bHammer§3§k!!")) {
+			if (p.getItemInHand().getItemMeta().getDisplayName().contains("Â§3Â§k!!Â§bHammerÂ§3Â§k!!")) {
 
 				if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
-					Inventory inv = Bukkit.createInventory(null, 27, "§9§k!!§bHammer Menu§9§k!!");
+					Inventory inv = Bukkit.createInventory(null, 27, "Â§9Â§k!!Â§bHammer MenuÂ§9Â§k!!");
 
 					ItemStack x3 = new ItemStack(Material.DIAMOND_PICKAXE, 1);
 					ItemMeta x3M = x3.getItemMeta();
-					x3M.setDisplayName("§3§k!!§bHammer§3§k!!§r §f§l» §b3x3");
+					x3M.setDisplayName("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b3x3");
 					x3.setItemMeta(x3M);
 
 					ItemStack x5 = new ItemStack(Material.DIAMOND_PICKAXE, 1);
 					ItemMeta x5M = x5.getItemMeta();
-					x5M.setDisplayName("§3§k!!§bHammer§3§k!!§r §f§l» §b5x5");
+					x5M.setDisplayName("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b5x5");
 					x5.setItemMeta(x5M);
 
 					ItemStack retour = new ItemStack(Material.ARROW, 1);
 					ItemMeta retourM = retour.getItemMeta();
-					retourM.setDisplayName("§f§l» §4Retour");
+					retourM.setDisplayName("Â§fÂ§lÂ» Â§4Retour");
 					retour.setItemMeta(retourM);
 
-					ItemStack désactiver = new ItemStack(Material.REDSTONE, 1);
-					ItemMeta désactiverM = désactiver.getItemMeta();
-					désactiverM.setDisplayName("§f§l» §4Disable");
-					désactiver.setItemMeta(désactiverM);
+					ItemStack dÃ©sactiver = new ItemStack(Material.REDSTONE, 1);
+					ItemMeta dÃ©sactiverM = dÃ©sactiver.getItemMeta();
+					dÃ©sactiverM.setDisplayName("Â§fÂ§lÂ» Â§4Disable");
+					dÃ©sactiver.setItemMeta(dÃ©sactiverM);
 
 					inv.setItem(11, x3);
-					inv.setItem(13, désactiver);
+					inv.setItem(13, dÃ©sactiver);
 					inv.setItem(15, x5);
 					inv.setItem(18, retour);
 
@@ -133,14 +138,14 @@ public class HammerEventListener implements Listener {
 	}
 
 	@EventHandler
-	public void oninventoryclick(InventoryClickEvent e) {
+	public void onInventoryClick(InventoryClickEvent e) {
 		Inventory inv = e.getInventory();
 		Player p = (Player) e.getWhoClicked();
 		ItemStack it = e.getCurrentItem();
 		if (it == null)
 			return;
 
-		if (inv.getName().equalsIgnoreCase("§9§k!!§bHammer Menu§9§k!!")) {
+		if (inv.getName().equalsIgnoreCase("Â§9Â§k!!Â§bHammer MenuÂ§9Â§k!!")) {
 
 			e.setCancelled(true);
 
@@ -153,33 +158,33 @@ public class HammerEventListener implements Listener {
 				ItemMeta itM = p.getItemInHand().getItemMeta();
 				ItemStack it1 = p.getItemInHand();
 
-				if (it.getItemMeta().getDisplayName().equalsIgnoreCase("§3§k!!§bHammer§3§k!!§r §f§l» §b3x3")) {
-					itM.setDisplayName("§3§k!!§bHammer§3§k!!§r §f§l» §b3x3");
+				if (it.getItemMeta().getDisplayName().equalsIgnoreCase("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b3x3")) {
+					itM.setDisplayName("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b3x3");
 					p.closeInventory();
 					it1.setItemMeta(itM);
 
-					p.sendMessage("§f§l» §6Hammer §7: §c3x3");
+					p.sendMessage("Â§fÂ§lÂ» Â§6Hammer Â§7: Â§c3x3");
 
 					return;
 				}
 
-				if (it.getItemMeta().getDisplayName().equalsIgnoreCase("§3§k!!§bHammer§3§k!!§r §f§l» §b5x5")) {
-					itM.setDisplayName("§3§k!!§bHammer§3§k!!§r §f§l» §b5x5");
+				if (it.getItemMeta().getDisplayName().equalsIgnoreCase("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b5x5")) {
+					itM.setDisplayName("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§b5x5");
 					p.closeInventory();
 					it1.setItemMeta(itM);
 
-					p.sendMessage("§f§l» §6Hammer §7: §c5x5");
+					p.sendMessage("Â§fÂ§lÂ» Â§6Hammer Â§7: Â§c5x5");
 
 					return;
 				}
 
-				if (it.getItemMeta().getDisplayName().equalsIgnoreCase("§f§l» §4Disable")) {
+				if (it.getItemMeta().getDisplayName().equalsIgnoreCase("Â§fÂ§lÂ» Â§4Disable")) {
 
-					itM.setDisplayName("§3§k!!§bHammer§3§k!!§r §f§l» §4Disable");
+					itM.setDisplayName("Â§3Â§k!!Â§bHammerÂ§3Â§k!!Â§r Â§fÂ§lÂ» Â§4Disable");
 					p.closeInventory();
 					it1.setItemMeta(itM);
 
-					p.sendMessage("§f§l» §6Hammer §7: §cDisable");
+					p.sendMessage("Â§fÂ§lÂ» Â§6Hammer Â§7: Â§cDisable");
 					return;
 				}
 
@@ -187,4 +192,5 @@ public class HammerEventListener implements Listener {
 
 		}
 	}
+
 }
