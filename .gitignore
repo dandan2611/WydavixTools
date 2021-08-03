@@ -11,5 +11,6 @@
 *.rar
 
 # IDE Settings files
+.settings
 .idea
 *.iml
