@@ -6,10 +6,12 @@ import java.util.HashMap;
 
 public class ItemManager {
 
-	private final HashMap<AbstractWydavixItem, ItemStack> builtItems;
-	private final HashMap<AbstractWydavixItem, ItemStack> builtFakeItems;
+	private final HashMap<String, AbstractWydavixItem> items;
+	private final HashMap<String, ItemStack> builtItems;
+	private final HashMap<String, ItemStack> builtFakeItems;
 	
 	public ItemManager() {
+		items = new HashMap<>();
 		builtItems = new HashMap<>();
 		builtFakeItems = new HashMap<>();
 		registerItems();
@@ -21,8 +23,22 @@ public class ItemManager {
 	}
 
 	private void registerItem(AbstractWydavixItem item) {
-		builtItems.put(item, item.build(false));
-		builtItems.put(item, item.build(true));
+		String identifier = item.getIdentifier();
+		items.put(identifier, item);
+		builtItems.put(identifier, item.build(false));
+		builtFakeItems.put(identifier, item.build(true));
+	}
+
+	public AbstractWydavixItem getWydavixItemByIdentifier(String identifier) {
+		return items.get(identifier);
+	}
+
+	public ItemStack getItemByIdentifier(String identifier) {
+		return builtItems.get(identifier);
+	}
+
+	public ItemStack getFakeItemByIdentifier(String identifier) {
+		return builtFakeItems.get(identifier);
 	}
 
 }

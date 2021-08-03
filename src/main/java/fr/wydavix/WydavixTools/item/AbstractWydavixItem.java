@@ -32,4 +32,8 @@ public abstract class AbstractWydavixItem {
         return item;
     }
 
+    public String getIdentifier() {
+        return getClass().getSimpleName().replaceAll("Item", "").toLowerCase();
+    }
+
 }

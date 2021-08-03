@@ -9,8 +9,8 @@ public class Main extends JavaPlugin {
 
 	public static Main INSTANCE;
 
-	public GuiManager guiManager;
-	public ItemManager itemManager;
+	private GuiManager guiManager;
+	private ItemManager itemManager;
 
 	/**
 	 * Called when the plugin is enabled
@@ -23,7 +23,7 @@ public class Main extends JavaPlugin {
 		this.guiManager = new GuiManager();
 		this.itemManager = new ItemManager();
 
-		getCommand("wydavix").setExecutor(new WydavixCommand());
+		getCommand("wydavix").setExecutor(new WydavixCommand(this));
 
 		new ListenersManager().registerListeners(this);
 	}
@@ -33,6 +33,14 @@ public class Main extends JavaPlugin {
 	 */
 	public void onDisable() {
 		System.out.println("[WydavixTools] Disable");
+	}
+
+	public GuiManager getGuiManager() {
+		return guiManager;
+	}
+
+	public ItemManager getItemManager() {
+		return itemManager;
 	}
 
 }
