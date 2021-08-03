@@ -17,6 +17,7 @@ public class ItemManager {
 
 	private void registerItems() {
 		registerItem(new HammerItem());
+		registerItem(new MjolnirItem());
 	}
 
 	private void registerItem(AbstractWydavixItem item) {

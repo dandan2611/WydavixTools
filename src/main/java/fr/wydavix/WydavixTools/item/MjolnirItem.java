@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixItem;
+package fr.wydavix.wydavixtools.item;
 
 import java.util.Arrays;
 
@@ -7,32 +7,48 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class MjolnirItem {
+public class MjolnirItem extends AbstractWydavixItem {
 
-	public ItemStack getMjolnir() {
-		ItemStack mjolnirn = new ItemStack(Material.DIAMOND_AXE, 1);
-		ItemMeta mjolnirnM = mjolnirn.getItemMeta();
-		mjolnirnM.setDisplayName("§1§k!!§9§lMjolnir§1§k!!");
-		mjolnirnM.setLore(Arrays.asList(" ", "§f§l» §6One chance in 20 to have lightning strike your opponent "));
-		mjolnirnM.addEnchant(Enchantment.DURABILITY, 4, true);
-		mjolnirnM.addEnchant(Enchantment.FIRE_ASPECT, 3, true);
-		mjolnirnM.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
-		mjolnirn.setItemMeta(mjolnirnM);
-
-		return mjolnirn;
-	}
-	
-	public ItemStack getMjolnirFake() {
-		ItemStack mjolnirn = new ItemStack(Material.DIAMOND_AXE, 1);
-		ItemMeta mjolnirnM = mjolnirn.getItemMeta();
-		mjolnirnM.setDisplayName("§1§k!!§9§lMjolnir§1§k!!");
-		mjolnirnM.setLore(Arrays.asList(" ","§f§l§nGive Item :"," ","§f§l» §7/§6wydavix give §7<§6player§7> §6mjolnir","§f§l» §6Left Click"));
-		mjolnirnM.addEnchant(Enchantment.DURABILITY, 4, true);
-		mjolnirnM.addEnchant(Enchantment.FIRE_ASPECT, 3, true);
-		mjolnirnM.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
-		mjolnirn.setItemMeta(mjolnirnM);
-
-		return mjolnirn;
+	@Override
+	public Material material() {
+		return Material.DIAMOND_AXE;
 	}
 
+	@Override
+	public byte materialByte() {
+		return 0;
+	}
+
+	@Override
+	public int quantity() {
+		return 1;
+	}
+
+	@Override
+	public String displayName(boolean fake) {
+		return "Â§1Â§k!!Â§9Â§lMjolnirÂ§1Â§k!!";
+	}
+
+	@Override
+	public String[] lore(boolean fake) {
+		return fake ?
+				new String[] {
+						" ",
+						"Â§fÂ§lÂ§nGive Item :",
+						" ",
+						"Â§fÂ§lÂ» Â§7/Â§6wydavix give Â§7<Â§6playerÂ§7> Â§6mjolnir",
+						"Â§fÂ§lÂ» Â§6Left Click"
+				} :
+				new String[] {
+						" ",
+						"Â§fÂ§lÂ» Â§6One chance in 20 to have a lightning strike your opponent "
+				};
+	}
+
+	@Override
+	public void addEnchants(ItemMeta meta) {
+		meta.addEnchant(Enchantment.DURABILITY, 4, true);
+		meta.addEnchant(Enchantment.FIRE_ASPECT, 3, true);
+		meta.addEnchant(Enchantment.DAMAGE_ALL, 10, true);
+	}
 }
