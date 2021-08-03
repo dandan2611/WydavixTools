@@ -8,26 +8,34 @@ import fr.wydavix.WydavixTools.PluginsManager.Commands.CommandWydavix;
 
 public class Main extends JavaPlugin {
 
-	public static Main instance;
+	public static Main INSTANCE;
 
-	public Utils Utils;
+	public WydavixUtils utils;
 	public GuiManager GuiManager;
 	public ItemManager ItemManager;
 
+	/**
+	 * Called when the plugin is enabled
+	 */
 	public void onEnable() {
 		System.out.println("[WydavixTools] Enabled");
-		EventManager.registerEvents(this);
 
-		Main.instance = this;
+		Main.INSTANCE = this;
 
-		this.Utils = new Utils();
+		// Creating utils class
+		this.utils = new WydavixUtils();
+
 		this.GuiManager = new GuiManager();
 		this.ItemManager = new ItemManager();
 
 		getCommand("wydavix").setExecutor(new CommandWydavix());
 
+		new ListenersManager().registerListeners(this);
 	}
 
+	/**
+	 * Called when the plugin is disabling
+	 */
 	public void onDisable() {
 		System.out.println("[WydavixTools] Disable");
 	}
