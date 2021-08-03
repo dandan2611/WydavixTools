@@ -10,14 +10,15 @@ import org.bukkit.inventory.meta.SkullMeta;
 
 public class WydavixUtils {
 
-	public ItemStack CreateItemSkull(Material Material, int MaterialShort, String Name, String Lore1, String Lore2,
-			String Lore3, String Lore4, String Lore5, Player p) {
+	public ItemStack createSkullItem(Material material, int materialShort, String name, Player player, String... lore) {
 		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
 		SkullMeta meta = (SkullMeta) item.getItemMeta();
-		meta.setOwner(p.getName());
-		meta.setDisplayName(Name);
-		meta.setLore(Arrays.asList(Lore1, Lore2, Lore3, Lore4, Lore5));
+
+		meta.setOwner(player.getName());
+		meta.setDisplayName(name);
+		meta.setLore(lore);
 		item.setItemMeta(meta);
+
 		return item;
 	}
 
