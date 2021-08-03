@@ -8,14 +8,14 @@ import org.bukkit.inventory.ItemStack;
 
 public class MainGui {
 
-	private static final ItemStack menuItem = WydavixUtils.createItem(
+	private static final ItemStack MENU_ITEM = WydavixUtils.createItem(
 			Material.ANVIL,
 			0,
 			"§9§l» §d§k!!§5Items Menu§d§k!!",
 			" ",
 			"§6Menu to retrieve items added by WydavixTools");
 
-	private static final ItemStack serverMenuItem = WydavixUtils.createItem(
+	private static final ItemStack SERVER_MENU_ITEM = WydavixUtils.createItem(
 			Material.CHEST,
 			0,
 			"§9§l» §c§k!!§4Server Menu§c§k!!",
@@ -23,13 +23,13 @@ public class MainGui {
 			"§6Menu to manage your server"
 	);
 
-	private static final ItemStack closeItem = WydavixUtils.createItem(
+	private static final ItemStack CLOSE_ITEM = WydavixUtils.createItem(
 			Material.ARROW,
 			0,
 			"§f§l» §4Fermer"
 	);
 
-	private static final ItemStack creditItem = WydavixUtils.createItem(
+	private static final ItemStack CREDIT_ITEM = WydavixUtils.createItem(
 			Material.BOOK,
 			0,
 			"§f§l» Developed By Wydavix",
@@ -37,7 +37,7 @@ public class MainGui {
 			"§9§l» §3WebSite §7: §b§nwww.wydavix.fr", "§4§l» §cNeed Support §7: §b§ndiscord.wydavix.fr"
 	);
 
-	private GuiManager manager;
+	private final GuiManager manager;
 
 	public MainGui(GuiManager manager) {
 		this.manager = manager;
@@ -49,10 +49,10 @@ public class MainGui {
 
 		manager.fillInventoryWithGlass(inventory);
 
-		inventory.setItem(20, menuItem);
-		inventory.setItem(22, serverMenuItem);
-		inventory.setItem(36, closeItem);
-		inventory.setItem(44, creditItem);
+		inventory.setItem(20, MENU_ITEM);
+		inventory.setItem(22, SERVER_MENU_ITEM);
+		inventory.setItem(36, CLOSE_ITEM);
+		inventory.setItem(44, CREDIT_ITEM);
 
 		return inventory;
 	}
