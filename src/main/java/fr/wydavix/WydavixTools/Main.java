@@ -10,8 +10,6 @@ public class Main extends JavaPlugin {
 	public GuiManager GuiManager;
 	public ItemManager ItemManager;
 
-	private WydavixUtils utils;
-
 	/**
 	 * Called when the plugin is enabled
 	 */
@@ -19,9 +17,6 @@ public class Main extends JavaPlugin {
 		System.out.println("[WydavixTools] Enabled");
 
 		Main.INSTANCE = this;
-
-		// Creating utils class
-		this.utils = new WydavixUtils();
 
 		this.GuiManager = new GuiManager();
 		this.ItemManager = new ItemManager();
@@ -36,10 +31,6 @@ public class Main extends JavaPlugin {
 	 */
 	public void onDisable() {
 		System.out.println("[WydavixTools] Disable");
-	}
-
-	public WydavixUtils getUtils() {
-		return this.utils;
 	}
 
 }

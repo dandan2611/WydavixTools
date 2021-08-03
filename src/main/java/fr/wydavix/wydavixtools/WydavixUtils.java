@@ -18,7 +18,7 @@ public class WydavixUtils {
 	 * @param lore Item lore
 	 * @return Fresh {@link ItemStack} with given informations
 	 */
-	public ItemStack createSkullItem(byte materialShort, String name, Player player, String... lore) {
+	public static ItemStack createSkullItem(byte materialShort, String name, Player player, String... lore) {
 		ItemStack item = new ItemStack(Material.SKULL_ITEM, 1, (byte) materialShort);
 		SkullMeta meta = (SkullMeta) item.getItemMeta();
 
@@ -38,7 +38,7 @@ public class WydavixUtils {
 	 * @param name Name of the item
 	 * @return Fresh {@link ItemStack} with given informations
 	 */
-	public ItemStack createItem(Material material, int materialShort, String name) {
+	public static ItemStack createItem(Material material, int materialShort, String name) {
 		ItemStack item = new ItemStack(material, 1, (byte) materialShort);
 		ItemMeta itemMeta = item.getItemMeta();
 
@@ -57,7 +57,7 @@ public class WydavixUtils {
 	 * @param lore Lore of the item
 	 * @return Fresh {@link ItemStack} with given informations
 	 */
-	public ItemStack createItem(Material material, int materialShort, String name, String... lore) {
+	public static ItemStack createItem(Material material, int materialShort, String name, String... lore) {
 		ItemStack item = new ItemStack(material, 1, (byte) materialShort);
 		ItemMeta itemMeta = item.getItemMeta();
 
