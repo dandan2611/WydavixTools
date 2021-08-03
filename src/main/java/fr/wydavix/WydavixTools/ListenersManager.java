@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginsManager;
+package fr.wydavix.wydavixtools;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -10,10 +10,11 @@ import fr.wydavix.WydavixTools.PluginManager.WydavixGui.ServerEventListener;
 import fr.wydavix.WydavixTools.PluginManager.WydavixItem.HammerEventListener;
 import fr.wydavix.WydavixTools.PluginManager.WydavixItem.MjolnirEventListener;
 
-public class EventManager {
+public class ListenersManager {
 
-	public static void registerEvents(Plugin pl) {
+	protected void registerListeners(Plugin pl) {
 		PluginManager pm = Bukkit.getPluginManager();
+
 		pm.registerEvents(new MainEventListener(), pl);
 		pm.registerEvents(new ItemEventListener(), pl);
 		pm.registerEvents(new ServerEventListener(), pl);
@@ -21,4 +22,5 @@ public class EventManager {
 		pm.registerEvents(new MjolnirEventListener(), pl);
 		pm.registerEvents(new WarningsEvent(), pl);
 	}
+
 }
