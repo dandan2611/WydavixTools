@@ -31,5 +31,21 @@ public class GuiManager {
 		for (int i = 18; i < 28; i += 9)
 			inv.setItem(i, glass);
 	}
+
+	public MainGui getMainGui() {
+		return mainGui;
+	}
+
+	public ItemGui getItemGui() {
+		return itemGui;
+	}
+
+	public ServerGui getServerGui() {
+		return serverGui;
+	}
+
+	public HammerGui getHammerGui() {
+		return hammerGui;
+	}
 	
 }
