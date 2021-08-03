@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class ServerGui {
 
-	private static final ItemStack BACK_ITEM = WydavixUtils.createItem(Material.ARROW, 0, "§f§l» §4Retour");
+	protected static final ItemStack BACK_ITEM = WydavixUtils.createItem(Material.ARROW, 0, "§f§l» §4Retour");
 
 	private final GuiManager manager;
 
