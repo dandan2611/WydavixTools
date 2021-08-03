@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public abstract class WydavixItem {
+public abstract class AbstractWydavixItem {
 
     public abstract Material material();
     public abstract byte materialByte();
