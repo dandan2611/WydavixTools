@@ -1,5 +1,6 @@
 package fr.wydavix.wydavixtools;
 
+import fr.wydavix.wydavixtools.commands.WydavixCommand;
 import fr.wydavix.wydavixtools.gui.GuiManager;
 import fr.wydavix.wydavixtools.item.ItemManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,7 +23,7 @@ public class Main extends JavaPlugin {
 		this.guiManager = new GuiManager();
 		this.itemManager = new ItemManager();
 
-		getCommand("wydavix").setExecutor(new CommandWydavix());
+		getCommand("wydavix").setExecutor(new WydavixCommand());
 
 		new ListenersManager().registerListeners(this);
 	}
