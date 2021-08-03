@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginsManager;
+package fr.wydavix.wydavixtools;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
