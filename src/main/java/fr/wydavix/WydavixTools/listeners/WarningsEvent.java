@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginsManager;
+package fr.wydavix.wydavixtools.listeners;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,7 +11,7 @@ public class WarningsEvent implements Listener {
 		Player p =e.getPlayer();
 
 		if (p.isOp()) {
-			p.sendMessage("§f§lWydavixTools §c§l» §4Please do not open or modify the config file in the WydavixTools folder.");
+			p.sendMessage("ï¿½fï¿½lWydavixTools ï¿½cï¿½lï¿½ ï¿½4Please do not open or modify the config file in the WydavixTools folder.");
 		}
 			
 	}
