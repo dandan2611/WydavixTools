@@ -8,14 +8,14 @@ import org.bukkit.inventory.ItemStack;
 
 public class MainGui {
 
-	private static final ItemStack MENU_ITEM = WydavixUtils.createItem(
+	protected static final ItemStack MENU_ITEM = WydavixUtils.createItem(
 			Material.ANVIL,
 			0,
 			"§9§l» §d§k!!§5Items Menu§d§k!!",
 			" ",
 			"§6Menu to retrieve items added by WydavixTools");
 
-	private static final ItemStack SERVER_MENU_ITEM = WydavixUtils.createItem(
+	protected static final ItemStack SERVER_MENU_ITEM = WydavixUtils.createItem(
 			Material.CHEST,
 			0,
 			"§9§l» §c§k!!§4Server Menu§c§k!!",
