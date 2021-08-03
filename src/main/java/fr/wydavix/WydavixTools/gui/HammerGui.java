@@ -1,23 +1,27 @@
 package fr.wydavix.wydavixtools.gui;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import fr.wydavix.WydavixTools.PluginsManager.Main;
-
 public class HammerGui {
-	private ItemStack back = Main.instance.Utils.CreateItem(Material.ARROW, 0, "�f�l� �4Retour");
-	
-	public Inventory getHammerGui() {
-		Inventory HammerGui = Bukkit.createInventory(null, 45, "�3�l� �bHammer Settings");
+
+	private static final ItemStack BACK_ITEM = ServerGui.BACK_ITEM;
+
+	private final GuiManager manager;
+
+	public HammerGui(GuiManager manager) {
+		this.manager = manager;
+	}
+
+	public Inventory generateHammerGui() {
+		Inventory inventory = Bukkit.createInventory(null, 45, "§3§l» §bHammer Settings");
 		
-		Main.instance.GuiManager.setGlassInventory(HammerGui);
+		manager.fillInventoryWithGlass(inventory);
 		
-		HammerGui.setItem(36, back);
+		inventory.setItem(36, BACK_ITEM);
 		
-		return HammerGui;
+		return inventory;
 	}
 
 }
