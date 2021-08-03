@@ -1,12 +1,27 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixItem;
+package fr.wydavix.wydavixtools.item;
+
+import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
 
 public class ItemManager {
 
-	public HammerItem HammerItem;
-	public MjolnirItem MjolnirItem;
+	private final HashMap<WydavixItem, ItemStack> builtItems;
+	private final HashMap<WydavixItem, ItemStack> builtFakeItems;
 	
 	public ItemManager() {
-		this.HammerItem = new HammerItem();
-		this.MjolnirItem = new MjolnirItem();
+		builtItems = new HashMap<>();
+		builtFakeItems = new HashMap<>();
+		registerItems();
 	}
+
+	private void registerItems() {
+		registerItem(new HammerItem());
+	}
+
+	private void registerItem(WydavixItem item) {
+		builtItems.put(item, item.build(false));
+		builtItems.put(item, item.build(true));
+	}
+
 }
