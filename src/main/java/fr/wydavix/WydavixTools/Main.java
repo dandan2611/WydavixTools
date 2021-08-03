@@ -1,18 +1,16 @@
 package fr.wydavix.wydavixtools;
 
+import fr.wydavix.wydavixtools.gui.GuiManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import fr.wydavix.WydavixTools.PluginManager.WydavixGui.GuiManager;
-import fr.wydavix.WydavixTools.PluginManager.WydavixItem.ItemManager;
-import fr.wydavix.WydavixTools.PluginsManager.Commands.CommandWydavix;
 
 public class Main extends JavaPlugin {
 
 	public static Main INSTANCE;
 
-	public WydavixUtils utils;
 	public GuiManager GuiManager;
 	public ItemManager ItemManager;
+
+	private WydavixUtils utils;
 
 	/**
 	 * Called when the plugin is enabled
@@ -38,6 +36,10 @@ public class Main extends JavaPlugin {
 	 */
 	public void onDisable() {
 		System.out.println("[WydavixTools] Disable");
+	}
+
+	public WydavixUtils getUtils() {
+		return this.utils;
 	}
 
 }

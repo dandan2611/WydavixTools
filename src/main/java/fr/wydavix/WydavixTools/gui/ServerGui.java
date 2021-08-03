@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
+package fr.wydavix.wydavixtools.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -9,10 +9,10 @@ import fr.wydavix.WydavixTools.PluginsManager.Main;
 
 public class ServerGui {
 
-	private ItemStack back = Main.instance.Utils.CreateItem(Material.ARROW, 0, "§f§l» §4Retour");
+	private ItemStack back = Main.instance.Utils.CreateItem(Material.ARROW, 0, "ï¿½fï¿½lï¿½ ï¿½4Retour");
 
 	public Inventory getMainServerGui() {
-		Inventory MainServerGui = Bukkit.createInventory(null, 45, "§c§k!!§4Server Menu§c§k!!");
+		Inventory MainServerGui = Bukkit.createInventory(null, 45, "ï¿½cï¿½k!!ï¿½4Server Menuï¿½cï¿½k!!");
 
 		Main.instance.GuiManager.setGlassInventory(MainServerGui);
 		MainServerGui.setItem(36, back);

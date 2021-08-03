@@ -1,4 +1,4 @@
-package fr.wydavix.WydavixTools.PluginManager.WydavixGui;
+package fr.wydavix.wydavixtools.gui;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -11,15 +11,15 @@ public class MainGui {
 	
 	public Inventory getWydavixGui() {
 
-		Inventory WydavixGui = Bukkit.createInventory(null, 45, "§f§l» §bWydavixTools Managers");
+		Inventory WydavixGui = Bukkit.createInventory(null, 45, "ï¿½fï¿½lï¿½ ï¿½bWydavixTools Managers");
 		ItemStack ItemMenu = Main.instance.Utils.CreateItemLore2(Material.ANVIL, 0, " ",
-				"§6Menu to retrieve items added by WydavixTools", "§9§l» §d§k!!§5Items Menu§d§k!!");
+				"ï¿½6Menu to retrieve items added by WydavixTools", "ï¿½9ï¿½lï¿½ ï¿½dï¿½k!!ï¿½5Items Menuï¿½dï¿½k!!");
 		ItemStack ServerMenu = Main.instance.Utils.CreateItemLore2(Material.CHEST, 0, " ",
-				"§6Menu to manage your server", "§9§l» §c§k!!§4Server Menu§c§k!!");
-		ItemStack close = Main.instance.Utils.CreateItem(Material.ARROW, 0, "§f§l» §4Fermer");
-		ItemStack credit = Main.instance.Utils.CreateItemLore4(Material.BOOK, 0, " ", "§f§l» Developed By Wydavix",
-				"§9§l» §3WebSite §7: §b§nwww.wydavix.fr", "§4§l» §cNeed Support §7: §b§ndiscord.wydavix.fr",
-				"§1§k!!§bWydavixTools§1§k!!");
+				"ï¿½6Menu to manage your server", "ï¿½9ï¿½lï¿½ ï¿½cï¿½k!!ï¿½4Server Menuï¿½cï¿½k!!");
+		ItemStack close = Main.instance.Utils.CreateItem(Material.ARROW, 0, "ï¿½fï¿½lï¿½ ï¿½4Fermer");
+		ItemStack credit = Main.instance.Utils.CreateItemLore4(Material.BOOK, 0, " ", "ï¿½fï¿½lï¿½ Developed By Wydavix",
+				"ï¿½9ï¿½lï¿½ ï¿½3WebSite ï¿½7: ï¿½bï¿½nwww.wydavix.fr", "ï¿½4ï¿½lï¿½ ï¿½cNeed Support ï¿½7: ï¿½bï¿½ndiscord.wydavix.fr",
+				"ï¿½1ï¿½k!!ï¿½bWydavixToolsï¿½1ï¿½k!!");
 
 		Main.instance.GuiManager.setGlassInventory(WydavixGui);
 
