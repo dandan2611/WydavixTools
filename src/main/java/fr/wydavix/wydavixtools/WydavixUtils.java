@@ -23,60 +23,27 @@ public class WydavixUtils {
 		return item;
 	}
 
-	public ItemStack CreateItem(Material Material, int MaterialShort, String Name) {
-		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
+	public ItemStack createItem(Material material, int materialShort, String name) {
+		ItemStack item = new ItemStack(material, 1, (byte) materialShort);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(Name);
+
+		itemMeta.setDisplayName(name);
+
 		item.setItemMeta(itemMeta);
+		
 		return item;
 	}
 
-	public ItemStack CreateItemLore(Material Material, int MaterialShort, String Lore, String Name) {
-		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
+	public ItemStack createItem(Material material, int materialShort, String name, String... lore) {
+		ItemStack item = new ItemStack(material, 1, (byte) materialShort);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(Name);
-		itemMeta.setLore(Arrays.asList(Lore));
+
+		itemMeta.setDisplayName(name);
+		itemMeta.setLore(Arrays.asList(lore));
+
 		item.setItemMeta(itemMeta);
-		return item;
-	}
-	
-	public ItemStack CreateItemLore2(Material Material, int MaterialShort, String Lore1, String Lore2,
-			String Name) {
-		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
-		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(Name);
-		itemMeta.setLore(Arrays.asList(Lore1, Lore2));
-		item.setItemMeta(itemMeta);
+
 		return item;
 	}
 
-	public ItemStack CreateItemLore3(Material Material, int MaterialShort, String Lore1, String Lore2, String Lore3,
-			String Name) {
-		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
-		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(Name);
-		itemMeta.setLore(Arrays.asList(Lore1, Lore2, Lore3));
-		item.setItemMeta(itemMeta);
-		return item;
-	}
-
-	public ItemStack CreateItemLore4(Material Material, int MaterialShort, String Lore1, String Lore2, String Lore3,
-			String Lore4, String Name) {
-		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
-		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(Name);
-		itemMeta.setLore(Arrays.asList(Lore1, Lore2, Lore3, Lore4));
-		item.setItemMeta(itemMeta);
-		return item;
-	}
-
-	public ItemStack CreateItemLore5(Material Material, int MaterialShort, String Lore1, String Lore2, String Lore3,
-			String Lore4, String Lore5, String Name) {
-		ItemStack item = new ItemStack(Material, 1, (byte) MaterialShort);
-		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(Name);
-		itemMeta.setLore(Arrays.asList(Lore1, Lore2, Lore3, Lore4, Lore5));
-		item.setItemMeta(itemMeta);
-		return item;
-	}
 }
