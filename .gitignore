@@ -10,6 +10,9 @@
 *.tar.gz
 *.rar
 
+# Maven generated files
+target
+
 # IDE Settings files
 .settings
 .idea
