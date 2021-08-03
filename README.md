@@ -10,3 +10,7 @@
 # 🔗 Download
 
 To downloads this plugins go to [shop.wydavix.fr](https://shop.wydavix.fr/) or [spigotmc.org](https://www.spigotmc.org/resources/wydavixtools.93198/)
+
+## Or build it yourself!
+Run `mvn clean install`
+The jar will be built in the `target/` directory
