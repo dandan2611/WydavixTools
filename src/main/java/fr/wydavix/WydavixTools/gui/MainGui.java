@@ -23,13 +23,13 @@ public class MainGui {
 			"§6Menu to manage your server"
 	);
 
-	private static final ItemStack CLOSE_ITEM = WydavixUtils.createItem(
+	protected static final ItemStack CLOSE_ITEM = WydavixUtils.createItem(
 			Material.ARROW,
 			0,
 			"§f§l» §4Fermer"
 	);
 
-	private static final ItemStack CREDIT_ITEM = WydavixUtils.createItem(
+	protected static final ItemStack CREDIT_ITEM = WydavixUtils.createItem(
 			Material.BOOK,
 			0,
 			"§f§l» Developed By Wydavix",
